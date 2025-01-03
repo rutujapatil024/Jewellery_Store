@@ -1,0 +1,105 @@
+.Navbar {
+  padding: 1px 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #62041C;
+}
+
+.logo {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 25px;
+  width: 100px;
+}
+
+.hallmark img { 
+  margin-top: 10px;
+  height: 75px;
+  width: 130px;
+  margin-left: 20px; /* Add margin for spacing after logo */
+}
+
+.navbar-head {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  color: #f5e9b3;
+  font-size: 20px;
+  margin: 0 auto; /* Center the list horizontally */
+}
+
+.navbar-right {
+  margin-right: 90px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.navbar-wishlist-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.navbar-cart-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.navbar-cart-icon .dot {
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: #D2AC47;
+  border-radius: 5px;
+  top: -8px;
+  right: -8px;
+}
+
+/* Style the images within each container */
+.navbar-right img,
+.navbar-wishlist-icon img,
+.navbar-cart-icon img {
+  width: 24px;
+  height: 24px;
+}
+
+.Navbar .active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid #D2AC47;
+}
+
+.Navbar li {
+  cursor: pointer;
+}
+
+@media(max-width:1050px){
+  .Navbar .logo{
+    width: 140px;
+  }
+  .navbar-head{
+    gap: 20px;
+    font-size: 17px;
+  }
+  .navbar-right{
+    gap: 30px;
+  }
+  .navbar-right img{
+    width: 22px;
+  }
+  .navbar-cart-icon img{
+    width: 22px;
+  }
+  .navbar-wishlist-icon{
+    width: 22px;
+  }
+  .hallmark img{
+    width: 30px;
+  }
+}
