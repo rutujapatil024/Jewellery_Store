@@ -1,32 +1,59 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Navbar.css';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom';
+import { StoreContext } from '../../Context/StoreContext';
 
-const Navbar = ({setShowLogin}) => {
-      const [Navbar,setNavbar] =useState("Navbar");
-  
+const Navbar = ({ setShowLogin }) => {
+  const [activeNavbar, setActiveNavbar] = useState("Navbar");
+
+  const { getTotalCartAmount } = useContext(StoreContext);
+
   return (
-    
-    <div className='Navbar'>
-      <img src={assets.nlogobg} alt="" className='logo'/>
-      <div className='hallmark'>
-        <img src={assets.hallmark} alt/>
+    <div className="Navbar">
+      <Link to="/">
+        <img src={assets.nlogobg} alt="Logo" className="logo" />
+      </Link>
+      <div className="hallmark">
+        <img src={assets.hallmark} alt="Hallmark Logo" />
       </div>
       <ul className="navbar-head">
-        <Link to='/' onClick={()=>setNavbar("Home")}className={Navbar==="Home"?"active":""}>Home</Link>
-        <a href='#categories' onClick={()=>setNavbar("Shop now")}className={Navbar==="Shop now"?"active":""}>Shop now</a>
-        <a href='#footer' onClick={()=>setNavbar("Contact us")}className={Navbar==="Contact us"?"active":""}>Contact us</a>
-        
-      </ul> 
-      
+        <Link
+          to="/"
+          onClick={() => setActiveNavbar("Home")}
+          className={activeNavbar === "Home" ? "active" : ""}
+        >
+          Home
+        </Link>
+        <a
+          href="#categories"
+          onClick={() => setActiveNavbar("Shop now")}
+          className={activeNavbar === "Shop now" ? "active" : ""}
+        >
+          Shop now
+        </a>
+        <a
+          href="#footer"
+          onClick={() => setActiveNavbar("Contact us")}
+          className={activeNavbar === "Contact us" ? "active" : ""}
+        >
+          Contact us
+        </a>
+      </ul>
+
       <div className="navbar-right">
-        <img onClick={()=>setShowLogin(true)} src={assets.profile} alt=''/>
-        <div className='navbar-wishlist-icon'>
-          <img src={assets.wishlist} alt=''/>
-        <div className='navbar-cart-icon'>
-          <img src={assets.cart} alt=''/>
-        <div className='dot'></div>
+        <img
+          onClick={() => setShowLogin(true)}
+          src={assets.profile}
+          alt="Profile"
+        />
+        <div className="navbar-wishlist-icon">
+          <img src={assets.wishlist} alt="Wishlist" />
+          <div className="navbar-cart-icon">
+            <Link to="/cart">
+              <img src={assets.cart} alt="Cart" />
+            </Link>
+            
           </div>
         </div>
       </div>

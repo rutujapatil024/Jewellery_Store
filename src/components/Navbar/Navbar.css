@@ -13,7 +13,7 @@
   width: 100px;
 }
 
-.hallmark img { 
+.hallmark img {
   margin-top: 10px;
   height: 75px;
   width: 130px;
@@ -79,27 +79,66 @@
   cursor: pointer;
 }
 
-@media(max-width:1050px){
-  .Navbar .logo{
+/* Responsive Adjustments */
+@media (max-width: 1050px) {
+  .Navbar .logo {
     width: 140px;
   }
-  .navbar-head{
+  .navbar-head {
     gap: 20px;
     font-size: 17px;
   }
-  .navbar-right{
+  .navbar-right {
     gap: 30px;
   }
-  .navbar-right img{
+  .navbar-right img,
+  .navbar-wishlist-icon img,
+  .navbar-cart-icon img {
     width: 22px;
   }
-  .navbar-cart-icon img{
-    width: 22px;
-  }
-  .navbar-wishlist-icon{
-    width: 22px;
-  }
-  .hallmark img{
+  .hallmark img {
     width: 30px;
+  }
+}
+
+@media (max-width: 900px) {
+  .Navbar .logo {
+    width: 120px;
+  }
+  .navbar-head {
+    gap: 15px;
+    font-size: 15px;
+  }
+  .navbar-right {
+    gap: 20px;
+  }
+  .navbar-right img,
+  .navbar-wishlist-icon img,
+  .navbar-cart-icon img {
+    width: 20px;
+  }
+  .hallmark img {
+    width: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar-head {
+    display: none; /* Hide navigation links on smaller screens */
+  }
+}
+
+@media (max-width: 600px) { 
+  .Navbar {
+    flex-direction: column; /* Stack elements vertically */
+  }
+  .logo {
+    margin-bottom: 15px; /* Add space below logo */
+  }
+  .hallmark img {
+    display: none; /* Hide hallmark image on very small screens */
+  }
+  .navbar-right {
+    margin-right: 0; /* Remove right margin */
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './LoginPopup.css';
 import { assets } from '../../assets/assets';
+import axios from "axios";
 
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState('Login'); // "Login" or "Sign Up"
@@ -31,11 +32,11 @@ const LoginPopup = ({ setShowLogin }) => {
 
   const validate = () => {
     if (currState === 'Sign Up') {
-      if (!formData.firstName.trim()) {
+      if (!/^[A-Za-z]+$/.test(formData.firstName.trim())) {
         alert('First name is required');
         return false;
       }
-      if (!formData.lastName.trim()) {
+      if (!/^[A-Za-z]+$/.test(formData.lastName.trim())) {
         alert('Last name is required');
         return false;
       }
@@ -63,13 +64,6 @@ const LoginPopup = ({ setShowLogin }) => {
         alert('Contact number must be exactly 10 digits');
         return false;
       }
-      if (
-        loginMethod === 'email' &&
-        (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email))
-      ) {
-        alert('Invalid email address');
-        return false;
-      }
       if (formData.password.length < 8) {
         alert('Password must be at least 8 characters');
         return false;
@@ -83,17 +77,43 @@ const LoginPopup = ({ setShowLogin }) => {
 
     if (validate()) {
       if (currState === 'Login') {
-        alert('Login successful!');
+        axios
+          .post("http://localhost:3001/api/auth/login", { formData })
+          .then((response) => {
+            alert(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            alert("Error submitting data:" + error);
+          });
+
       } else {
-        alert('Account created successfully!');
+        axios
+          .post("http://127.0.0.1:3001/api/auth/register", { formData })
+          .then((response) => {
+            alert(JSON.stringify(response.data));
+          })
+          .catch((error) => {
+            console.error("Error submitting data:" + error);
+          });
       }
       console.log('Form submitted:', formData);
     }
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent default behavior
+      handleSubmit(e); // Trigger form submission
+    }
+  };
+
   return (
     <div className="login-popup">
-      <form className="login-popup-container" onSubmit={handleSubmit}>
+      <form
+        className="login-popup-container"
+        onSubmit={handleSubmit}
+        onKeyDown={handleKeyPress} // Listen for Enter key
+      >
         <div className="login-popup-title">
           <h2>{currState}</h2>
           <img onClick={() => setShowLogin(false)} src={assets.cross_icon} alt="" />
@@ -153,51 +173,33 @@ const LoginPopup = ({ setShowLogin }) => {
               />
             </>
           )}
-
-          {currState === 'Login' && (
-            <>
-              <select
-                value={loginMethod}
-                onChange={(e) => setLoginMethod(e.target.value)}
-                required
-              >
-                <option value="email">Login with Email</option>
-                <option value="contact">Login with Contact Number</option>
-              </select>
-
-              {loginMethod === 'contact' ? (
-                <input
-                  type="text"
-                  name="contactNumber"
-                  placeholder="Contact number"
-                  value={formData.contactNumber}
-                  onChange={handleNumericInput}
-                  maxLength={10}
-                  required
-                />
-              ) : (
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              )}
-            </>
-          )}
-
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            minLength={8}
-            required
-          />
         </div>
+
+        {currState === 'Login' && (
+          <>
+            <div className='login-part'>
+              <input
+                type="text"
+                name="contactNumber"
+                placeholder="Contact number"
+                value={formData.contactNumber}
+                onChange={handleNumericInput}
+                maxLength={10}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={handleChange}
+                minLength={8}
+                required
+              />
+            </div>
+          </>
+        )}
+
         {currState === 'Sign Up' && (
           <div className="login-popup-condition">
             <input type="checkbox" required /> I agree to the terms of use & privacy policy.

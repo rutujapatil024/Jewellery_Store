@@ -10,10 +10,10 @@ const Jewelitem = ({id,name,price,description,image}) => {
         </div>
         <div className="jewel-item-info">
             
-                // <p>{name}</p>
+                 <p>{name}</p>
                 
             </div>
-            //<p className='jewel-item-desc'>{description}</p>
+            <p className='jewel-item-desc'>{description}</p>
             <p className='jewel-item-price'>Rs.{price}</p>
         </div>
   )

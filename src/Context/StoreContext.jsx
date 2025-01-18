@@ -1,5 +1,5 @@
 import { createContext } from "react";
-//import { product_list } from "../assets/assets";
+import { product_list } from "../assets/assets";
 
 export const StoreContext = createContext(null)
 
@@ -8,7 +8,7 @@ const StoreContextProvider = (props) => {
 
 
     const contextValue = {
-       // product_list
+        product_list
     }
     return (
         <StoreContext.Provider value={contextValue}>
@@ -17,4 +17,4 @@ const StoreContextProvider = (props) => {
     )
 }
 
-export default StoreContextProvider
+export default StoreContextProvider;
