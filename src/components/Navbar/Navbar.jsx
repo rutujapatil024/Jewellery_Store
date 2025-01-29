@@ -48,7 +48,9 @@ const Navbar = ({ setShowLogin }) => {
           alt="Profile"
         />
         <div className="navbar-wishlist-icon">
-          <img src={assets.wishlist} alt="Wishlist" />
+          <Link to = "/Wishlist">
+            <img src={assets.wishlist} alt="Wishlist" />
+          </Link>
           <div className="navbar-cart-icon">
             <Link to="/cart">
               <img src={assets.cart} alt="Cart" />

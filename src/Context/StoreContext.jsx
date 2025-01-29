@@ -1,20 +1,43 @@
-import { createContext } from "react";
-import { product_list } from "../assets/assets";
+import React, { createContext, useState } from "react";
 
-export const StoreContext = createContext(null)
+export const StoreContext = createContext();
 
-const StoreContextProvider = (props) => {
+const StoreProvider = ({ children }) => {
+
+  const [product_list] = useState([
+  ]);
 
 
+  const [wishlist, setWishlist] = useState([]);
 
-    const contextValue = {
-        product_list
-    }
-    return (
-        <StoreContext.Provider value={contextValue}>
-            {props.children}
-        </StoreContext.Provider>
-    )
-}
 
-export default StoreContextProvider;
+  const addToWishlist = (item) => {
+    setWishlist((prev) => {
+      if (prev.some((wishlistItem) => wishlistItem._id === item._id)) {
+        return prev; 
+      }
+      return [...prev, item];
+    });
+  };
+
+
+  const removeFromWishlist = (itemId) => {
+    setWishlist((prev) => prev.filter((item) => item._id !== itemId));
+  };
+
+  return (
+    <StoreContext.Provider
+      value={{
+        product_list,
+        wishlist,
+        addToWishlist,
+        removeFromWishlist,
+        
+      }}
+    >
+      {children}
+    </StoreContext.Provider>
+  );
+};
+
+export default StoreProvider;

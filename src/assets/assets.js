@@ -26,6 +26,7 @@ import whatsapp from './whatsapp.png'
 import facebook from './facebook.png'
 import instagram from './instagram.png'
 import cross_icon from './cross_icon.png'
+import red_wishlist from './red_wishlist.png'
 
 
 import ring1 from './ring1.jpg'
@@ -77,6 +78,7 @@ export const assets ={
     cart,
     profile,
     wishlist,
+    red_wishlist,
     image1,
     image2,
     image3,
