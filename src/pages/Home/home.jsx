@@ -4,7 +4,8 @@ import Header from '../../components/Header/Header'
 import Categories from '../../components/Categories/Categories'
 import ProductDisplay from '../../components/ProductDisplay/ProductDisplay'
 import Bridal from '../../components/Bridal/Bridal'
-import Wishlist from '../Wishlist/Wishlist'
+import ShopByGender from '../../components/ShopByGender/ShopByGender'
+import VideoGallery from '../../components/VideoGallery/VideoGallery'
 
 const home = () => {
 
@@ -16,7 +17,10 @@ const home = () => {
       <Header/>
       <Categories product={product} setProduct={setProduct}/>
       <ProductDisplay product={product}/>
+      <VideoGallery />
       <Bridal/>  
+      <ShopByGender/>
+      
     </div>
   )
 }

@@ -76,3 +76,12 @@
     font-weight: 500;
     cursor: pointer;
 }
+.privacy-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .privacy-link:hover {
+    color: darkblue;
+  }
+  

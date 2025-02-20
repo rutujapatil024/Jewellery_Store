@@ -3,7 +3,6 @@ import './Header.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { assets } from '../../assets/assets';
 
 const Header = () => {
   const [images, setImages] = useState([

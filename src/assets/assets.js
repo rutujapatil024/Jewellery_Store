@@ -13,6 +13,12 @@ import earrings from './earrings.jpg'
 import goldchain from './goldchain.jpg'
 import goldcoin from './goldcoin.jpg'
 import silvercoin from './silvercoin.jpg'
+import anklet from './anklet.jpg'
+import bracelet from './bracelet.mp4'
+import mixed from './mixed.mp4'
+import necklace from './necklace.mp4'
+import platinumring from './platinumring.mp4'
+import ganesh from './ganesh.mp4'
 
 import hallmark from './hallmark.png'
 import chat from './chat.png'
@@ -27,6 +33,9 @@ import facebook from './facebook.png'
 import instagram from './instagram.png'
 import cross_icon from './cross_icon.png'
 import red_wishlist from './red_wishlist.png'
+import parcel_icon from './parcel_icon.png'
+import myorders from './myorders.png'
+import logout from './logout.png'
 
 
 import ring1 from './ring1.jpg'
@@ -86,14 +95,19 @@ export const assets ={
     whatsapp,
     facebook,
     instagram,
-    cross_icon, 
+    cross_icon,
+    parcel_icon, 
+    logout,
+    myorders,
+    bracelet, mixed, necklace, platinumring, ganesh,
     ring1, ring2,ring3, ring4,
     bangle1, bangle2, bangle3, bangle4,
     mangalsutra1, mangalsutra2, mangalsutra3,mangalsutra4,
     goldcoin1,goldcoin2, goldcoin3, goldcoin4,
     silver1,silver2,silver3,silver4,
     chain1,chain2,chain3,chain4,
-    earring1,earring2,earring3,earring4
+    earring1,earring2,earring3,earring4,
+    anklet
 }
 export const category_list = [
     {
@@ -115,6 +129,10 @@ export const category_list = [
     {
         category_name: "Gold Chain",
         category_img: goldchain
+    },
+    {
+        category_name: "Anklet",
+        category_img: anklet
     },
     {
         category_name: "Gold Coin & Bars",
@@ -330,3 +348,35 @@ export const category_list = [
         category_name: "Silver Coin & Bars"
     }
 ]
+export const womensJewelry = [
+    { name: "Gold Ring", image: ring1},
+    { name: "Gold Earring", image: earring1 },
+    { name: "Gold Pendant", image: mangalsutra1 },
+    { name: "Gold Chain", image: goldcoin1 },
+  ];
+  
+  export const mensJewelry = [
+    { name: "Gold Ring", image: ring2 },
+    { name: "Gold Pendant", image: goldcoin2 },
+    { name: "Gold Kada", image: bangle1 },
+    { name: "Gold Chain", image: goldcoin3 },
+  ];
+  
+  export const kidsJewelry = [
+    { name: "Gold Ring", image: ring4 },
+    { name: "Gold Earring", image: earring3 },
+    { name: "Gold Pendant", image: goldcoin2 },
+    { name: "Gold Bracelet", image: bangle3 },
+  ];
+
+  const videos = {
+    video1: mixed,
+    video2: platinumring,
+    video3: necklace,
+    video4: bracelet,
+    video5: ganesh
+  };
+  
+  export default videos;
+  
+  

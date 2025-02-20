@@ -7,6 +7,7 @@ const Categories = ({product,setProduct}) => {
     <div className='categories' id='categories'>
         <h1>Discover Our Collections</h1>
         <p className='categories-text'>Discover stunning pieces in every category, from classic to contemporary.</p>
+
         <div className='category-list'>
             {category_list.map((item,index)=>{
                 console.log(item.category_name)

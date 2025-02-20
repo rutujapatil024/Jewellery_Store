@@ -1,125 +1,123 @@
-import React, { useState } from 'react';
-import './LoginPopup.css';
-import { assets } from '../../assets/assets';
+import React, { useState, useContext } from "react";
+import "./LoginPopup.css";
+import { assets } from "../../assets/assets";
 import axios from "axios";
+import { StoreContext } from "../../Context/StoreContext";
+import { Link } from "react-router-dom";
 
-const LoginPopup = ({ setShowLogin }) => {
-  const [currState, setCurrState] = useState('Login'); // "Login" or "Sign Up"
-  const [loginMethod, setLoginMethod] = useState('email'); // "email" or "contact"
+
+const LoginPopup = ({ setShowLogin, setIsAuthenticated, setUser }) => {
+  const { url, setToken } = useContext(StoreContext);
+  const [currState, setCurrState] = useState("Login"); // "Login" or "Sign Up"
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    contactNumber: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
+    firstName: "",
+    lastName: "",
+    contactNumber: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleNumericInput = (e) => {
-    const value = e.target.value;
-    if (/^\d*$/.test(value)) {
+    if (/^\d*$/.test(e.target.value)) {
       handleChange(e);
     }
   };
 
   const validate = () => {
-    if (currState === 'Sign Up') {
+    if (currState === "Sign Up") {
       if (!/^[A-Za-z]+$/.test(formData.firstName.trim())) {
-        alert('First name is required');
+        alert("First name is required");
         return false;
       }
       if (!/^[A-Za-z]+$/.test(formData.lastName.trim())) {
-        alert('Last name is required');
+        alert("Last name is required");
         return false;
       }
       if (!/^\d{10}$/.test(formData.contactNumber)) {
-        alert('Enter valid contact number');
+        alert("Enter valid contact number");
         return false;
       }
       if (!formData.email.trim() || !/\S+@\S+\.\S+/.test(formData.email)) {
-        alert('Invalid email address');
+        alert("Invalid email address");
         return false;
       }
       if (formData.password.length < 8) {
-        alert('Password must be at least 8 characters');
+        alert("Password must be at least 8 characters");
         return false;
       }
       if (formData.password !== formData.confirmPassword) {
-        alert('Passwords do not match');
+        alert("Passwords do not match");
         return false;
       }
-    } else if (currState === 'Login') {
-      if (
-        loginMethod === 'contact' &&
-        !/^\d{10}$/.test(formData.contactNumber)
-      ) {
-        alert('Contact number must be exactly 10 digits');
+    } else if (currState === "Login") {
+      if (!/^\d{10}$/.test(formData.contactNumber)) {
+        alert("Contact number must be exactly 10 digits");
         return false;
       }
       if (formData.password.length < 8) {
-        alert('Password must be at least 8 characters');
+        alert("Password must be at least 8 characters");
         return false;
       }
     }
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (validate()) {
-      if (currState === 'Login') {
-        axios
-          .post("http://localhost:3001/api/auth/login", { formData })
-          .then((response) => {
-            alert(JSON.stringify(response.data));
-          })
-          .catch((error) => {
-            alert("Error submitting data:" + error);
-          });
-
+  
+    if (!validate()) return;
+  
+    try {
+      const url =
+        currState === "Login"
+          ? "http://localhost:3001/api/auth/login"
+          : "http://127.0.0.1:3001/api/auth/register";
+  
+      const response = await axios.post(url, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+  
+      console.log("Server Response:", response.data); // Debugging Step
+  
+      if (response.data.success) {
+        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token); // ✅ Store token in local storage
+        localStorage.setItem("user", JSON.stringify(response.data.user)); // ✅ Store user info
+        setShowLogin(false);
+        alert("Login successful!");
+        window.location.reload();
       } else {
-        axios
-          .post("http://127.0.0.1:3001/api/auth/register", { formData })
-          .then((response) => {
-            alert(JSON.stringify(response.data));
-          })
-          .catch((error) => {
-            console.error("Error submitting data:" + error);
-          });
+        alert(response.data.message);
       }
-      console.log('Form submitted:', formData);
+    } catch (error) {
+      console.error("Login Error:", error);
+      alert("Error submitting data: " + error);
     }
   };
-
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Prevent default behavior
-      handleSubmit(e); // Trigger form submission
-    }
-  };
+  
+  
 
   return (
     <div className="login-popup">
-      <form
-        className="login-popup-container"
-        onSubmit={handleSubmit}
-        onKeyDown={handleKeyPress} // Listen for Enter key
-      >
+      <form className="login-popup-container" onSubmit={handleSubmit}>
         <div className="login-popup-title">
           <h2>{currState}</h2>
-          <img onClick={() => setShowLogin(false)} src={assets.cross_icon} alt="" />
+          <img
+            onClick={() => setShowLogin(false)}
+            src={assets.cross_icon}
+            alt="Close"
+          />
         </div>
         <div className="login-popup-inputs">
-          {currState === 'Sign Up' && (
+          {currState === "Sign Up" && (
             <>
               <input
                 type="text"
@@ -173,11 +171,8 @@ const LoginPopup = ({ setShowLogin }) => {
               />
             </>
           )}
-        </div>
-
-        {currState === 'Login' && (
-          <>
-            <div className='login-part'>
+          {currState === "Login" && (
+            <>
               <input
                 type="text"
                 name="contactNumber"
@@ -196,26 +191,33 @@ const LoginPopup = ({ setShowLogin }) => {
                 minLength={8}
                 required
               />
-            </div>
-          </>
+            </>
+          )}
+        </div>
+        {currState === "Sign Up" && (
+         <div className="login-popup-condition">
+         <input type="checkbox" required /> By continuing, I agree to the
+         terms of use &{" "}
+         <Link to="/privacy-policy" className="privacy-link" onClick={() => setShowLogin(false)}>
+           Privacy Policy
+         </Link>.
+       </div>
+       
+       
         )}
-
-        {currState === 'Sign Up' && (
-          <div className="login-popup-condition">
-            <input type="checkbox" required /> I agree to the terms of use & privacy policy.
-          </div>
-        )}
-        <button type="submit">{currState === 'Sign Up' ? 'Create Account' : 'Login'}</button>
+        <button type="submit">
+          {currState === "Sign Up" ? "Create Account" : "Login"}
+        </button>
         <div>
-          {currState === 'Login' ? (
+          {currState === "Login" ? (
             <p>
-              <b>Don't have an account?</b>{' '}
-              <span onClick={() => setCurrState('Sign Up')}>Sign up here</span>
+              <b>Don't have an account?</b>{" "}
+              <span onClick={() => setCurrState("Sign Up")}>Sign up here</span>
             </p>
           ) : (
             <p>
-              <b>Already have an account?</b>{' '}
-              <span onClick={() => setCurrState('Login')}>Login here</span>
+              <b>Already have an account?</b>{" "}
+              <span onClick={() => setCurrState("Login")}>Login here</span>
             </p>
           )}
         </div>

@@ -8,6 +8,14 @@ import Footer from './components/Footer/Footer';
 import LoginPopup from './components/LoginPopup/LoginPopup';
 import ItemDetails from './components/ItemDetails/ItemDetails';
 import Cart from './pages/Cart/Cart';
+import AboutUs from './components/Footer/AboutUs';
+import PrivacyPolicy from './components/Footer/PrivacyPolicy';
+import ShippingPolicy from './components/Footer/ShippingPolicy';
+import RingSize from './components/Footer/RingSize';
+import BangleSize from './components/Footer/BangleSize';
+import FAQ from './components/Footer/FAQ';
+import MyOrders from './pages/MyOrders/MyOrders';
+import Categories from './components/Categories/Categories'
 
 
 const App = () => {
@@ -25,7 +33,15 @@ const App = () => {
                     <Route path="/cart" element={<Cart />} />
                     <Route path='/wishlist' element={<Wishlist />} />
                     <Route path='/placeorder' element={<PlaceOrder />} />
+                    <Route path='/placeorder' element={<Categories />} />
                     <Route path="/item/:id" element={<ItemDetails />} />
+                    <Route path="/about" element={<AboutUs />} />
+                    <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
+                    <Route path='/shipping-policy' element={<ShippingPolicy/>} />
+                    <Route path='/ring-size-guide' element={<RingSize/>} />
+                    <Route path='/bangle-size-guide' element={<BangleSize/>} />
+                    <Route path='/faq' element={<FAQ/>} />
+                    <Route path='/myorders' element={<MyOrders/>} />
                 </Routes>
             </div>
             <Footer />

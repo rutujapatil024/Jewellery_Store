@@ -34,7 +34,7 @@ const HomePage = () => {
     };
 
     return (
-        <div className="img-container" style={{ padding: "70px" }}>
+        <div className="img-container" style={{ marginTop:"50px", marginBottom:"10px", marginLeft:"140px", marginRight:"140px"}}>
             <h2 className="bridal-title">Bridal tales of India </h2>
             <Slider {...settings}>
                 {images.map((image) => (
