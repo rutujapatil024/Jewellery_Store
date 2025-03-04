@@ -4,7 +4,7 @@ const User = require("../model/user")
 
 const loginUsers = async (req,res) => {
 
-    const { contactNumber, password } = req.body.formData;
+    const { contactNumber, password } = req.body;
     
     const userExists = await User.exists({ contactNumber })
 
@@ -14,16 +14,17 @@ const loginUsers = async (req,res) => {
 
     const user = await User.findOne({ contactNumber });
     const succ = user.matchPassword(password); 
-    if(succ) {
-        res.json({
-            message: 'Login successful',
-            token: 'token',
+    if (succ) {
+        return res.json({
+          success: true, // ✅ Ensure success is included
+          message: "Login successful",
+          token: "sample_token", // Replace with JWT if using
+          user: { id: user._id, contactNumber: user.contactNumber, email: user.email }, // ✅ Ensure user object is sent
         });
-    } else {
-        res.status(400).json({
-            message: 'Invalid Credentials',
-        });
-    }
+      }
+      
+    console.log("Received Data:", req.body);
+
 
 }
 
