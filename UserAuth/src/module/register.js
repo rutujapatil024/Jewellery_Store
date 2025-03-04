@@ -1,10 +1,9 @@
 const User = require("../model/user")
 
 const registerUser = async (req,res) => {
-    console.log(JSON.stringify(req.body))
-    const { firstName, password, email, lastName, contactNumber} = req.body.formData;
+    const { firstName, password, email, lastName, contactNumber} = req.body;
     try {
-        const isExistingUser = await User.exists({ email })
+        const isExistingUser = await User.exists({ contactNumber })
         if(isExistingUser) {
             return res.status(400).json({ message: 'User already exists'})
         }
@@ -15,7 +14,6 @@ const registerUser = async (req,res) => {
             email,
             password,
             contactNumber,
-            
         })
 
         await user.save();

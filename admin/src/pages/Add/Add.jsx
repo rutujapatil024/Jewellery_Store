@@ -13,8 +13,8 @@ const Add = ({url}) => {
     price: "",
     category: "Rings",
     subcategory: "Gold",
-    size: "",
-    gender: "Female",
+    size: "defaultSizes[0]",
+    gender: "Women",
   });
 
   // Different size options based on category
@@ -32,13 +32,17 @@ const Add = ({url}) => {
   // Update size options dynamically based on selected category
   useEffect(() => {
     if (data.category === "Bangles") {
-      setSizeOptions(bangleSizes);
+        setSizeOptions(bangleSizes);
+        setData(prev => ({ ...prev, size: bangleSizes[0] }));  // Reset to first size
     } else if (data.category === "Mangalsutra" || data.category === "Gold Chain") {
-      setSizeOptions(chainSizes);
+        setSizeOptions(chainSizes);
+        setData(prev => ({ ...prev, size: chainSizes[0] }));  // Reset to first size
     } else {
-      setSizeOptions(defaultSizes);
+        setSizeOptions(defaultSizes);
+        setData(prev => ({ ...prev, size: defaultSizes[0] }));  // Reset to first size
     }
-  }, [data.category]);
+}, [data.category]);
+
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -54,7 +58,11 @@ const Add = ({url}) => {
 
     try {
       //line 56
-      const response = await axios.post(`${url}/`, formData);
+      const response = await axios.post("http://localhost:3001/api/auth/jewellery", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       if (response.data.success) {
         setData({
           name: "",
@@ -62,8 +70,8 @@ const Add = ({url}) => {
           price: "",
           category: "Rings",
           subcategory: "Gold",
-          size: "",
-          gender: "Female",
+          size: "defaultSizes[0]",
+          gender: "Women",
         });
         setImage(null);
         toast.success(response.data.message);
@@ -136,8 +144,9 @@ const Add = ({url}) => {
           <div className="gender flex-col">
             <p>Select gender</p>
             <select onChange={onChangeHandler} name="gender">
-              <option value="Female">Female</option>
-              <option value="Male">Male</option>
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Kids">Kids</option>
             </select>
           </div>
 
