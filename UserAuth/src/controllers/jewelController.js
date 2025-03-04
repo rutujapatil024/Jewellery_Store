@@ -5,14 +5,14 @@ import fs from "fs";
 const addjewel = async (req, res) => {
   try {
 
-    const image = req.file;
-    console.log(image)
-    if(!req.image){
+    const image = req.file;  // Multer processes images under req.file
+    if (!image) {
         return res.status(400).json({
             success: false,
             message: "Image not found",
-          });
+        });
     }
+    
     // Validate required fields
     const { name, description, price, category, subcategory, gender, size } = req.body;
     if (!name || !description || !price || !category) {

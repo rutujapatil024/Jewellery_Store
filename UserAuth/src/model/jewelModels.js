@@ -1,16 +1,19 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const jewelSchema = new mongoose.Schema({
-    name:{type:String,required:true},
-    description: {type:String,required:true},
-    price:{type:Number,required:true},
-    image:{type:String},
-    category:{type:String,required:true},
-    subcategory:{type:String,required:true},
-    gender:{type:String,required:true},
-    size:{type:String,required:true}
+    name:{type:String},
+    description: {type:String},
+    price:{type:Number},
+    image: {
+        data: Buffer,
+        contentType: String
+     }, 
+    category:{type:String},
+    subcategory:{type:String},
+    gender:{type:String},
+    size:{type:String}
 })
 
 const jewelModel = mongoose.models.jewellery || mongoose.model('jewellery',jewelSchema)
 
-export default jewelModel;
+module.exports = mongoose.model('JewelModel', jewelSchema);
