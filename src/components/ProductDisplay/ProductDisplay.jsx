@@ -8,10 +8,13 @@ export const ProductDisplay = ({ product }) => {
   const { product_list } = useContext(StoreContext);
   const navigate = useNavigate();  // Initialize useNavigate hook
 
+  console.log("Selected Product Category:", product);
+  console.log("Product List:", product_list);
+
   // Function to handle image click and navigate to a specific product page
   const handleProductClick = (id) => {
    //navigate(`'./components/ItemDetails/ItemDetails/'${id}`);  // Redirect to the product details page using the product's ID
-   navigate(`/item/${id}`);  // Redirect to the product details page using the product's ID
+   navigate(`/item-details/${id}`);  // Redirect to the product details page using the product's ID
 
   };
 

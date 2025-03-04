@@ -20,8 +20,14 @@ const LoginPopup = ({ setShowLogin, setIsAuthenticated, setUser }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if ((name === "firstName" || name === "lastName") && /[0-9]/.test(value)) {
+        return; // Don't update state if numeric value is found
+    }
+
     setFormData({ ...formData, [name]: value });
-  };
+};
+
 
   const handleNumericInput = (e) => {
     if (/^\d*$/.test(e.target.value)) {
@@ -32,11 +38,11 @@ const LoginPopup = ({ setShowLogin, setIsAuthenticated, setUser }) => {
   const validate = () => {
     if (currState === "Sign Up") {
       if (!/^[A-Za-z]+$/.test(formData.firstName.trim())) {
-        alert("First name is required");
+        alert("Enter valid First name");
         return false;
       }
       if (!/^[A-Za-z]+$/.test(formData.lastName.trim())) {
-        alert("Last name is required");
+        alert("Enter valid Last name");
         return false;
       }
       if (!/^\d{10}$/.test(formData.contactNumber)) {
@@ -79,6 +85,10 @@ const LoginPopup = ({ setShowLogin, setIsAuthenticated, setUser }) => {
           ? "http://localhost:3001/api/auth/login"
           : "http://127.0.0.1:3001/api/auth/register";
   
+          //GET: to read the data
+          //POST: to send the data
+          //DELTE to delete the data0
+          
       const response = await axios.post(url, formData, {
         headers: {
           "Content-Type": "application/json",

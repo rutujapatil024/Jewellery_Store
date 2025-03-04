@@ -30,7 +30,7 @@ const HomePage = () => {
         slidesToShow: 3, // Show 3 images at a time
         slidesToScroll: 3, // Scroll one image at a time
         autoplay: true, // Enable auto-sliding
-        autoplaySpeed: 4000, // Slide every 3 seconds
+        autoplaySpeed: 3000, // Slide every 3 seconds
     };
 
     return (

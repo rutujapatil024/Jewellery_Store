@@ -46,9 +46,7 @@ const ShippingPolicy = () => {
 
       <h3>Contact Us</h3>
       <p>
-        📞 <strong>Phone:</strong> +91 98679 32282 <br></br> +91 77180 69999 <br /> <br />
-        📧 <strong>Email:</strong> [Your Email] <br />
-    
+        📞 <strong>Phone:</strong> +91 98679 32282 <br></br> +91 77180 69999 <br /> <br />    
       </p>
     </div>
   );

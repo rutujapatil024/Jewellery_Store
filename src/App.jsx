@@ -16,7 +16,9 @@ import BangleSize from './components/Footer/BangleSize';
 import FAQ from './components/Footer/FAQ';
 import MyOrders from './pages/MyOrders/MyOrders';
 import Categories from './components/Categories/Categories'
-
+import Collections from './components/Collections/Collections'
+import ShopByGenderDisplay from "./components/ShopByGender/ShopByGenderDisplay";
+import ProductDisplay from './components/ProductDisplay/ProductDisplay'
 
 const App = () => {
     const [showLogin, setShowLogin] = useState(false);
@@ -30,18 +32,23 @@ const App = () => {
                 <Routes>
                     
                     <Route path='/' element={<Home />} />
+                    <Route path="/login" element={<LoginPopup />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path='/wishlist' element={<Wishlist />} />
                     <Route path='/placeorder' element={<PlaceOrder />} />
                     <Route path='/placeorder' element={<Categories />} />
-                    <Route path="/item/:id" element={<ItemDetails />} />
+                    <Route path="/item-details/:id" element={<ItemDetails />} />
                     <Route path="/about" element={<AboutUs />} />
                     <Route path='/privacy-policy' element={<PrivacyPolicy/>} />
                     <Route path='/shipping-policy' element={<ShippingPolicy/>} />
                     <Route path='/ring-size-guide' element={<RingSize/>} />
                     <Route path='/bangle-size-guide' element={<BangleSize/>} />
                     <Route path='/faq' element={<FAQ/>} />
-                    <Route path='/myorders' element={<MyOrders/>} />
+                    <Route path='/my-orders' element={<MyOrders/>} />
+                    <Route path='/collections' element={<Collections/>} />
+                    <Route path="/shop-by-gender" element={<ShopByGenderDisplay />} />
+                    <Route path="/products" element={<ProductDisplay product="All" />} />
+
                 </Routes>
             </div>
             <Footer />

@@ -39,8 +39,7 @@ const PrivacyPolicy = () => {
       <p>If you have any questions about this Privacy Policy, please contact us at:</p>
       <p className="contact-info">
         📞 <strong>Phone:</strong> +91 98679 32282 <br></br>
-        +91 77180 69999 <br />
-        📧 <strong>Email:</strong> [Your Email] <br />
+                                    +91 77180 69999 <br />
       </p>
     </div>
   );

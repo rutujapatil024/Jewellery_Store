@@ -19,6 +19,26 @@ import mixed from './mixed.mp4'
 import necklace from './necklace.mp4'
 import platinumring from './platinumring.mp4'
 import ganesh from './ganesh.mp4'
+import Kbracelet from './Kbracelet.jpg'
+import Kearrings from './Kearrings.jpg'
+import Kgoldring from './Kgoldring.jpg'
+import Kpendant from './Kpendant.jpg'
+import Mgoldchain from './Mgoldchain.jpg'
+import Mgoldkada from './Mgoldkada.jpg'
+import Mgoldpendant from './Mgoldpendant.jpg'
+import Mgoldring from './Mgoldring.jpg'
+import Wgoldchain from './Wgoldchain.jpeg'
+import Wpendant from './Wpendant.jpg'
+import GW_earring from './GW_earring.jpg'
+import GW_ring from './GW_ring.jpg'
+import GW_pendant from './GW_pendant.jpg'
+import GW_CHAIN from './GW_CHAIN.jpg'
+import GM_ring from './GM_ring.jpg'
+import GM_bracelet from './GM_bracelet.jpg'
+import GM_chain from './GM_chain.jpg'
+import GM_kada from './GM_kada.jpg'
+
+
 
 import hallmark from './hallmark.png'
 import chat from './chat.png'
@@ -100,6 +120,8 @@ export const assets ={
     logout,
     myorders,
     bracelet, mixed, necklace, platinumring, ganesh,
+    Kbracelet,Kearrings,Kgoldring,Kpendant, Wgoldchain, Wpendant,Mgoldchain,Mgoldkada,Mgoldpendant,Mgoldring,
+    GW_earring,GW_CHAIN,GW_pendant,GW_ring,GM_ring,GM_kada,GM_bracelet,GM_chain,
     ring1, ring2,ring3, ring4,
     bangle1, bangle2, bangle3, bangle4,
     mangalsutra1, mangalsutra2, mangalsutra3,mangalsutra4,
@@ -151,6 +173,8 @@ export const category_list = [
         image: ring1,
         price: 12000,
         description: "22K,20gms",
+        gender: "Women",
+        subcategory: "Gold",
         category_name: "Rings"
     },
     {
@@ -159,70 +183,90 @@ export const category_list = [
         image: ring2,
         price: 35000,
         description: "22K,25gms",
-        category_name: "Rings"
+        category_name: "Rings",
+        gender: "Women",
+        subcategory: "Gold",
     }, {
         _id: "3",
         name: "ring3",
         image: ring3,
         price: 12000,
         description: "22K,20gms",
-        category_name: "Rings"
+        category_name: "Rings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "4",
         name: "ring4",
         image: ring4,
         price: 12000,
         description: "22K,20gms",
-        category_name: "Rings"
+        category_name: "Rings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "5",
         name: "Bangle1",
         image: bangle1,
         price: 140000,
         description: "22k, 20gm",
-        category_name: "Bangles"
+        category_name: "Bangles",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "6",
         name: "Bangle2",
         image: bangle2,
         price: 140000,
         description: "22k, 20gm",
-        category_name: "Bangles"
+        category_name: "Bangles",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "7",
         name: "Bangle3",
         image: bangle3,
         price: 160000,
         description: "22k, 20gm",
-        category_name: "Bangles"
+        category_name: "Bangles",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "8",
         name: "Bangle4",
         image: bangle4,
         price: 40000,
         description: "22k, 20gm",
-        category_name: "Bangles"
+        category_name: "Bangles",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "9",
         name: "Chain1",
         image: chain1,
         price: 30000,
         description: "22k, 20gm",
-        category_name: "Gold Chain"
+        category_name: "Gold Chain",
+        gender: "Men",
+        subcategory: "Gold"
     }, {
         _id: "10",
         name: "Chain2",
         image: chain2,
         price: 35000,
         description: "22k, 20gm",
-        category_name: "Gold Chain"
+        category_name: "Gold Chain",
+        gender: "Men",
+        subcategory: "Gold"
     }, {
         _id: "11",
         name: "Chain3",
         image: chain3,
         price: 30000,
         description: "22k, 20gm",
-        category_name: "Gold Chain"
+        category_name: "Gold Chain",
+        gender: "Men",
+        subcategory: "Gold"
     }, 
     {
         _id: "12",
@@ -230,7 +274,9 @@ export const category_list = [
         image: chain4,
         price: 20000,
         description: "22k, 20gm",
-        category_name: "Gold Chain"
+        category_name: "Gold Chain",
+        gender: "Men",
+        subcategory: "Gold"
     },
     {
         _id: "13",
@@ -238,77 +284,95 @@ export const category_list = [
         image: earring1,
         price: 30300,
         description: "22k, 20gm",
-        category_name: "Earrings"
+        category_name: "Earrings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "14",
         name: "Earring2",
         image: earring2,
         price: 34000,
         description: "22k, 20gm",
-        category_name: "Earrings"
+        category_name: "Earrings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "15",
         name: "Earring3",
         image: earring3,
         price: 25000,
         description: "22k, 20gm",
-        category_name: "Earrings"
+        category_name: "Earrings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "16",
         name: "Earring4",
         image: earring4,
         price: 14000,
         description: "18k, 20gm",
-        category_name: "Earrings"
+        category_name: "Earrings",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "17",
         name: "Goldcoin1",
         image: goldcoin1,
         price: 10000,
         description: "24k, 10gm",
-        category_name: "Gold Coin & Bars"
+        category_name: "Gold Coin & Bars",
+        subcategory: "Gold"
     }, {
         _id: "18",
         name: "Goldcoin2",
         image: goldcoin2,
         price: 12000,
         description: "24k, 10gm",
-        category_name: "Gold Coin & Bars"
+        category_name: "Gold Coin & Bars",
+        subcategory: "Gold"
     }, {
         _id: "19",
         name: "Goldcoin3",
         image: goldcoin3,
         price: 10800,
         description: "24k, 10gm",
-        category_name: "Gold Coin & Bars"
+        category_name: "Gold Coin & Bars",
+        subcategory: "Gold"
     }, {
         _id: "20",
         name: "Goldcoin4",
         image: goldcoin4,
         price: 18000,
         description: "24k, 10gm",
-        category_name: "Gold Coin & Bars"
+        category_name: "Gold Coin & Bars",
+        subcategory: "Gold"
     }, {
         _id: "21",
         name: "Mangalsutra1",
         image: mangalsutra1,
         price: 22000,
         description: "22K, Black beads",
-        category_name: "Mangalsutra"
+        category_name: "Mangalsutra",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "22",
         name: "Mangalsutra2",
         image: mangalsutra2,
         price: 24000,
         description: "22K, Black beads",
-        category_name: "Mangalsutra"
+        category_name: "Mangalsutra",
+        gender: "Women",
+        subcategory: "Gold"
     }, {
         _id: "23",
         name: "Mangalsutra3",
         image: mangalsutra3,
         price: 25000,
         description: "22K, Black beads",
-        category_name: "Mangalsutra"
+        category_name: "Mangalsutra",
+        gender: "Women",
+        subcategory: "Gold"
     },
     {
         _id: "24",
@@ -316,7 +380,9 @@ export const category_list = [
         image: mangalsutra4,
         price: 22000,
         description: "22K, Black beads",
-        category_name: "Mangalsutra"
+        category_name: "Mangalsutra",
+        gender: "Women",
+        subcategory: "Gold"
     },
     {
         _id: "25",
@@ -324,49 +390,53 @@ export const category_list = [
         image: silver1,
         price: 9000,
         description: "Pure silver",
-        category_name: "Silver Coin & Bars"
+        category_name: "Silver Coin & Bars",
+        subcategory: "Silver"
     }, {
         _id: "26",
         name: "Silver Article",
         image: silver2,
         price: 8000,
         description: "Pure silver",
-        category_name: "Silver Coin & Bars"
+        category_name: "Silver Coin & Bars",
+        subcategory: "Silver"
     }, {
         _id: "27",
         name: "Silver Article",
         image: silver3,
         price: 10000,
         description: "Pure silver",
-        category_name: "Silver Coin & Bars"
+        category_name: "Silver Coin & Bars",
+        subcategory: "Silver"
     }, {
         _id: "28",
         name: "Silver Article",
         image: silver4,
         price: 10000,
         description: "Pure silver",
-        category_name: "Silver Coin & Bars"
+        category_name: "Silver Coin & Bars",
+        subcategory: "Silver"
     }
 ]
 export const womensJewelry = [
-    { name: "Gold Ring", image: ring1},
-    { name: "Gold Earring", image: earring1 },
-    { name: "Gold Pendant", image: mangalsutra1 },
-    { name: "Gold Chain", image: goldcoin1 },
+    { name: "Rings", image: GW_ring},
+    { name: "Earrings", image: GW_earring },
+    { name: "Pendants", image: GW_pendant },
+    { name: "Chains", image: GW_CHAIN },
   ];
   
   export const mensJewelry = [
-    { name: "Gold Ring", image: ring2 },
-    { name: "Gold Pendant", image: goldcoin2 },
-    { name: "Gold Kada", image: bangle1 },
-    { name: "Gold Chain", image: goldcoin3 },
+    { name: "Rings", image: GM_ring},
+    { name: "Bracelet", image: GM_bracelet },
+    { name: "Kada", image: GM_kada },
+    { name: "Chains", image: GM_chain },
   ];
   
   export const kidsJewelry = [
-    { name: "Gold Ring", image: ring4 },
-    { name: "Gold Earring", image: earring3 },
-    { name: "Gold Pendant", image: goldcoin2 },
-    { name: "Gold Bracelet", image: bangle3 },
+    { name: "Rings", image: Kgoldring },
+    { name: "Earrings", image: Kearrings },
+    { name: "Pendant", image: Kpendant },
+    { name: "Bracelet", image: Kbracelet },
   ];
 
   const videos = {

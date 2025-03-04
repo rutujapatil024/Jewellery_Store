@@ -6,6 +6,9 @@ const VideoGallery = () => {
   const videoRefs = Array(5).fill().map(() => useRef(null)); // Create refs for each video
 
   return ( 
+    <div className="title">
+      <hr/>
+    <h1>The Craft of Brilliance: A Luxurious Showcase</h1>
     <div className="video-gallery">
       {/* Vertical Video on the Left */}
       <div className="video-container vertical">
@@ -36,6 +39,7 @@ const VideoGallery = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

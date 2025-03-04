@@ -2,7 +2,6 @@ import React from 'react'
 import './Footer.css'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
-import LiveRatesButton from '../LiveRates/LiveRates'
 
 const Footer = () => {
     return (
@@ -11,7 +10,7 @@ const Footer = () => {
                 <div className="footer-content-left">
                     <img src={assets.nlogo} alt='' />
                     <p>Gold, Silver, Diamond & Platinum Jewellery</p>
-                    <LiveRatesButton />
+                   
                     <div className="footer-social-icons">
                         <img
                             src={assets.whatsapp}

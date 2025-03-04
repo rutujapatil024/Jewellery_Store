@@ -1,28 +1,35 @@
-import React, { useState } from 'react'
-import './home.css'
-import Header from '../../components/Header/Header'
-import Categories from '../../components/Categories/Categories'
-import ProductDisplay from '../../components/ProductDisplay/ProductDisplay'
-import Bridal from '../../components/Bridal/Bridal'
-import ShopByGender from '../../components/ShopByGender/ShopByGender'
-import VideoGallery from '../../components/VideoGallery/VideoGallery'
+import React, { useState, useEffect } from 'react';
+import './home.css';
+import Header from '../../components/Header/Header';
+import Categories from '../../components/Categories/Categories';
+import ProductDisplay from '../../components/ProductDisplay/ProductDisplay';
+import Bridal from '../../components/Bridal/Bridal';
+import ShopByGender from '../../components/ShopByGender/ShopByGender';
+import VideoGallery from '../../components/VideoGallery/VideoGallery';
+import { useLocation } from 'react-router-dom';
 
-const home = () => {
+const Home = () => {
+  const [product, setProduct] = useState("All");
+  const { hash } = useLocation();
 
-    const[product,setProduct] = useState("All");
-    
+  useEffect(() => {
+    if (hash === "#categories") {
+      document.getElementById("categories")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [hash]);
 
   return (
     <div>
-      <Header/>
-      <Categories product={product} setProduct={setProduct}/>
-      <ProductDisplay product={product}/>
+      <Header />
+      <div id="categories">
+        <Categories product={product} setProduct={setProduct} />
+      </div>
+      <ProductDisplay product={product} />
       <VideoGallery />
-      <Bridal/>  
-      <ShopByGender/>
-      
+      <Bridal />
+      <ShopByGender />
     </div>
-  )
-}
+  );
+};
 
-export default home
+export default Home;

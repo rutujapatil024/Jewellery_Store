@@ -17,7 +17,9 @@ const AboutUs = () => {
         <li><strong>Gold Jewellery</strong> – Traditional and contemporary designs to suit every occasion.</li>
         <li><strong>Platinum Jewellery</strong> – Elegant and durable pieces for a touch of luxury.</li>
         <li><strong>Silver Jewellery</strong> – Beautifully crafted silver ornaments with intricate detailing.</li>
+        <li><strong>Gemstone Jewellery</strong> – Vibrant and unique pieces featuring precious and semi-precious stones.</li>
       </ul>
+
 
       <h3>Our Services</h3>
       <ul className="services-list">
@@ -31,7 +33,7 @@ const AboutUs = () => {
       <p className="contact-info">
         📞 <strong>Contact Us:<br></br></strong> 98679 32282 <br></br>
         77180 69999 <br />
-       
+
       </p>
     </div>
   );

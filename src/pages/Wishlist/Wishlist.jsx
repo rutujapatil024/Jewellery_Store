@@ -1,42 +1,54 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Wishlist.css';
 import { StoreContext } from '../../Context/StoreContext';
-import { useNavigate } from 'react-router-dom';
 
 const Wishlist = () => {
-    const { wishlistItems, product_list, removeFromWishlist } = useContext(StoreContext);
+    const { wishlist, removeFromWishlist, addToCart, token } = useContext(StoreContext);
+
+    useEffect(() => {
+        if (!token) {
+            // Clear wishlist when user logs out
+            removeFromWishlist(null);  // Consider adding logic in context to clear all when null is passed.
+        }
+    }, [token, removeFromWishlist]);
 
     return (
         <div className='wishlist'>
-            <div className="wishlist-items">
-                <div className="wishlist-items-title">
-                    <p>Items</p>
-                    <p>Title</p>
-                    <p>Price</p>
-                    <p>Remove</p>
-                </div>
-                <br />
-                <hr />
-                {product_list.map((item, index) => {
-                    if (wishlistItems[item._id] > 0) {
-                        return (
-                            <div key={index}>
-                                <div className='wishlist-items-title wishlist-items-item'>
-                                    <img src={item.image} alt="" />
-                                    <p>{item.name}</p>
-                                    <p>Rs.{item.price}</p>
-                                    <p>{wishlistItems[item._id]}</p>
-                                    <p onClick={() => removeFromWishlist(item._id)} className='cross'>X</p>
+            <h2>My Wishlist</h2>
+            {!token || wishlist.length === 0 ? (
+                <p className="empty-wishlist">Your wishlist is empty.</p>
+            ) : (
+                <div className="wishlist-grid">
+                    {wishlist.map((item, index) => (
+                        <div key={index} className='wishlist-card'>
+                            <img src={item.image} alt={item.name} className='wishlist-image' />
+                            <div className="wishlist-info">
+                                <h3>{item.name}</h3>
+                                <p>₹{item.price}</p>
+                                <div className="wishlist-actions">
+                                    <button
+                                        onClick={() => removeFromWishlist(item._id)}
+                                        className='remove-btn'
+                                    >
+                                        Remove
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            addToCart(item);
+                                            removeFromWishlist(item._id);
+                                        }}
+                                        className='add-to-cart-btn'
+                                    >
+                                        Add to Cart
+                                    </button>
                                 </div>
-                                <hr />
                             </div>
-                        );
-                    }
-                    return null;
-                })}
-            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default Wishlist;
